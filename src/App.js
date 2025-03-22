@@ -1,47 +1,35 @@
-import React, { useState } from "react";
-import "./App.css"
+// src/App.js
+import React from "react";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import Home from "./Home";
+import Info from "./Info";
+import "./App.css";
 
 function App() {
-  const [query, setQuery] = useState("");
-  const [playlist, setPlaylist] = useState([]);
-
-  const handleGenerate = async () => {
-    // Simulem una resposta dummy amb una llista fixa de cançons.
-    const dummyPlaylist = [
-      "Macarrisme Català - Baya Baye MGT Los Sosis",
-      "Barretina - Baya Baye MGT Los Sosis",
-      "La Mala Espina - Baya Baye MGT Los Sosis",
-      "As Bestas - Baya Baye MGT Los Sosis"
-    ];
-    setPlaylist(dummyPlaylist);
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="App">
-      <h1>Spotifai - Recomanador de Música</h1>
-      <p>Descriu el tipus de música que vols escoltar:</p>
-      <input
-        type="text"
-        className="inputField"
-        placeholder="Escriu la teva descripció aquí..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <button onClick={handleGenerate} className="generateButton">
-        Generar Playlist
+      <nav style={{ marginBottom: "1rem" }}>
+        {/* Enllaços de navegació */}
+        <Link to="/" style={{ marginRight: "1rem" }}>
+          Inici
+        </Link>
+        <Link to="/info">
+          Informació
+        </Link>
+      </nav>
+
+      <button onClick={() => navigate("/info")}>
+        Més informació
       </button>
-      <div className="playlist">
-        <h2>La teva Playlist Dummy:</h2>
-        {playlist.length > 0 ? (
-          <ul>
-            {playlist.map((song, index) => (
-              <li key={index}>{song}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No hi ha cançons per mostrar encara.</p>
-        )}
-      </div>
+
+      <Routes>
+        {/* Ruta per a la pàgina principal */}
+        <Route path="/" element={<Home />} />
+        {/* Ruta per a la pàgina d'informació */}
+        <Route path="/info" element={<Info />} />
+      </Routes>
     </div>
   );
 }
