@@ -1,23 +1,24 @@
 import React from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Home from "./Home/Home";
 import Info from "./Info/Info";
-import "./App.css";
+import "./index.css"; // o "./App.css" si ho has posat allí
 
 function App() {
-  const navigate = useNavigate();
-
   return (
     <div className="App">
       <nav>
-        <Link to="/" className="navLink">Inici</Link>
-        <Link to="/info" className="navLink">Informació</Link>
+        <Link to="/">Inici</Link>
+        <Link to="/info">Informació</Link>
       </nav>
-      <button onClick={() => navigate("/info")}>Més informació</button>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/info" element={<Info />} />
-      </Routes>
+
+      {/* Contenidor on es carregaran les "pàgines" */}
+      <div className="mainContainer">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/info" element={<Info />} />
+        </Routes>
+      </div>
     </div>
   );
 }
