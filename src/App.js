@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css"
 
 function App() {
   const [query, setQuery] = useState("");
@@ -7,29 +8,29 @@ function App() {
   const handleGenerate = async () => {
     // Simulem una resposta dummy amb una llista fixa de cançons.
     const dummyPlaylist = [
-      "Cançó 1 - Artista Dummy",
-      "Cançó 2 - Artista Dummy",
-      "Cançó 3 - Artista Dummy",
-      "Cançó 4 - Artista Dummy"
+      "Macarrisme Català - Baya Baye MGT Los Sosis",
+      "Barretina - Baya Baye MGT Los Sosis",
+      "La Mala Espina - Baya Baye MGT Los Sosis",
+      "As Bestas - Baya Baye MGT Los Sosis"
     ];
     setPlaylist(dummyPlaylist);
   };
 
   return (
-    <div className="App" style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
+    <div className="App">
       <h1>Spotifai - Recomanador de Música</h1>
       <p>Descriu el tipus de música que vols escoltar:</p>
       <input
         type="text"
+        className="inputField"
         placeholder="Escriu la teva descripció aquí..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        style={{ padding: "0.5rem", width: "300px", marginRight: "1rem" }}
       />
-      <button onClick={handleGenerate} style={{ padding: "0.5rem 1rem" }}>
-        Genera Playlist
+      <button onClick={handleGenerate} className="generateButton">
+        Generar Playlist
       </button>
-      <div style={{ marginTop: "2rem" }}>
+      <div className="playlist">
         <h2>La teva Playlist Dummy:</h2>
         {playlist.length > 0 ? (
           <ul>
