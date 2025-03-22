@@ -1,5 +1,5 @@
-// src/Home.js
 import React, { useState } from "react";
+import "./Home.css";
 
 function Home() {
   const [query, setQuery] = useState("");
@@ -7,16 +7,16 @@ function Home() {
 
   const handleGenerate = () => {
     const dummyPlaylist = [
-        "Macarrisme Català - Baya Baye MGT Los Sosis",
-        "Barretina - Baya Baye MGT Los Sosis",
-        "La Mala Espina - Baya Baye MGT Los Sosis",
-        "As Bestas - Baya Baye MGT Los Sosis"
-      ];
-      setPlaylist(dummyPlaylist);
+      "Macarrisme Català - Baya Baye MGT Los Sosis",
+      "Barretina - Baya Baye MGT Los Sosis",
+      "La Mala Espina - Baya Baye MGT Los Sosis",
+      "As Bestas - Baya Baye MGT Los Sosis"
+    ];
+    setPlaylist(dummyPlaylist);
   };
 
   return (
-    <div>
+    <div className="homeContainer">
       <h1>Spotifai - Recomanador de Música</h1>
       <p>Descriu el tipus de música que vols escoltar:</p>
       <input
@@ -24,12 +24,9 @@ function Home() {
         placeholder="Escriu la teva descripció aquí..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        style={{ padding: "0.5rem", width: "300px", marginRight: "1rem" }}
       />
-      <button onClick={handleGenerate} style={{ padding: "0.5rem 1rem" }}>
-        Genera Playlist
-      </button>
-      <div style={{ marginTop: "2rem" }}>
+      <button onClick={handleGenerate}>Genera Playlist</button>
+      <div className="playlist">
         <h2>La teva Playlist Dummy:</h2>
         {playlist.length > 0 ? (
           <ul>

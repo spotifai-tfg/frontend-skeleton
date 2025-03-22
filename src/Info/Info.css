@@ -1,0 +1,31 @@
+/* Info.css */
+
+.infoContainer {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  .infoContainer h2 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .infoContainer p {
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  .infoContainer a {
+    color: #007acc;
+    text-decoration: underline;
+  }
+  
+  .infoContainer a:hover {
+    color: #005fa3;
+  }
+  
