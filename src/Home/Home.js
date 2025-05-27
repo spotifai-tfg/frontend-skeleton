@@ -1,18 +1,20 @@
+// src/Home/Home.js
 import React, { useState } from "react";
+import axios from "axios";
 import "./Home.css";
 
 function Home() {
   const [query, setQuery] = useState("");
   const [playlist, setPlaylist] = useState([]);
 
-  const handleGenerate = () => {
-    const dummyPlaylist = [
-      "Macarrisme Català - Baya Baye MGT Los Sosis",
-      "Barretina - Baya Baye MGT Los Sosis",
-      "La Mala Espina - Baya Baye MGT Los Sosis",
-      "As Bestas - Baya Baye MGT Los Sosis"
-    ];
-    setPlaylist(dummyPlaylist);
+  const handleGenerate = async () => {
+    try {
+      // Gràcies al proxy, només cal "/recommend"
+      const response = await axios.post("/recommend", { query });
+      setPlaylist(response.data.playlist);
+    } catch (error) {
+      console.error("Error generant la playlist:", error);
+    }
   };
 
   return (
@@ -30,8 +32,8 @@ function Home() {
         <h2>La teva Playlist Dummy:</h2>
         {playlist.length > 0 ? (
           <ul>
-            {playlist.map((song, index) => (
-              <li key={index}>{song}</li>
+            {playlist.map((song, i) => (
+              <li key={i}>{song}</li>
             ))}
           </ul>
         ) : (
