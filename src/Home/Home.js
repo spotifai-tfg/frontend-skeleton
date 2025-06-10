@@ -5,13 +5,21 @@ import "./Home.css";
 
 function Home() {
   const [query, setQuery] = useState("");
-  const [playlist, setPlaylist] = useState([]);
+  const [recommendations, setRecommendations] = useState([]);
 
   const handleGenerate = async () => {
+    if (!query.trim()) {
+      return; // no fem res si no hi ha text
+    }
+
     try {
-      // Gràcies al proxy, només cal "/recommend"
-      const response = await axios.post("/recommend", { query });
-      setPlaylist(response.data.playlist);
+      // Fem un GET a /recommend?q=<consulta>&k=10 (o el nombre que vulguis)
+      const response = await axios.get("/recommend", {
+        params: { q: query, k: 10 },
+      });
+
+      // El backend retorna { query: "...", recommendations: [ {msd_id, mxm_id, title, artist, score}, ... ] }
+      setRecommendations(response.data.recommendations);
     } catch (error) {
       console.error("Error generant la playlist:", error);
     }
@@ -28,12 +36,16 @@ function Home() {
         onChange={(e) => setQuery(e.target.value)}
       />
       <button onClick={handleGenerate}>Genera Playlist</button>
+
       <div className="playlist">
-        <h2>La teva Playlist Dummy:</h2>
-        {playlist.length > 0 ? (
+        <h2>Les meves Recomanacions:</h2>
+        {recommendations.length > 0 ? (
           <ul>
-            {playlist.map((song, i) => (
-              <li key={i}>{song}</li>
+            {recommendations.map((song, i) => (
+              <li key={i}>
+                <strong>{song.title}</strong> — {song.artist}{" "}
+                <span className="score">({song.score.toFixed(3)})</span>
+              </li>
             ))}
           </ul>
         ) : (

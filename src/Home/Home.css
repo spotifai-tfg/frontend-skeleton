@@ -27,7 +27,7 @@
   .homeContainer button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    background-color: #61dafb;
+    background-color: #0ada11;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -35,7 +35,7 @@
   }
   
   .homeContainer button:hover {
-    background-color: #21a1f1;
+    background-color: #1acd14;
   }
   
   .playlist {
