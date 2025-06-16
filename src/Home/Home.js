@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Home.css";
 
+
 function Home() {
   const [query, setQuery] = useState("");
   const [recommendations, setRecommendations] = useState([]);
+  const API_BASE_URL = process.env.REACT_APP_API_URL || "";
 
   const handleGenerate = async () => {
     if (!query.trim()) {
@@ -14,7 +16,7 @@ function Home() {
 
     try {
       // Fem un GET a /recommend?q=<consulta>&k=10 (o el nombre que vulguis)
-      const response = await axios.get("/recommend", {
+      const response = await axios.get("${API_BASE_URL}/recommend", {
         params: { q: query, k: 10 },
       });
 
