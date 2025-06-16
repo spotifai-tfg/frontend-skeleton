@@ -16,7 +16,7 @@ function Home() {
 
     try {
       // Fem un GET a /recommend?q=<consulta>&k=10 (o el nombre que vulguis)
-      const response = await axios.get("${API_BASE_URL}/recommend", {
+      const response = await axios.get(`${API_BASE_URL}/recommend`, {
         params: { q: query, k: 10 },
       });
 
