@@ -31,3 +31,15 @@ jobs:
       - name: Push Docker image
         run: docker push $IMAGE_NAME
 
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: spotifai-frontend
+          image: docker.io/${{ env.IMAGE_NAME }}
+          region: europe-west1
+
