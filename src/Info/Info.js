@@ -4,19 +4,19 @@ import "./Info.css";
 function Info() {
   return (
     <div className="infoContainer">
-      <h2>Informació del projecte</h2>
+      <h2>About this project</h2>
       <p>
-        Aquest és un Treball de Final de Grau realitzat per Carles Sànchez Hidalgo amb l'ajuda, mentoria i tutoria de Ferran Aran Domingo.
+        This is a final degree project carried out by Carles Sànchez i Hidalgo with the help, mentoring, and tutoring of Ferran Aran Domingo.
       </p>
       <p>
-        Pots trobar més informació al següent enllaç:
+        You can find more information at the following link:
         <br />
         <a
           href="https://github.com/spotifai-tfg/spotifai"
           target="_blank"
           rel="noopener noreferrer"
         >
-          GitHub Repo
+          GitHub Repository
         </a>
       </p>
     </div>

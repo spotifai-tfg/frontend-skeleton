@@ -29,18 +29,18 @@ function Home() {
 
   return (
     <div className="homeContainer">
-      <h1>Spotifai - Recomanador de Música</h1>
-      <p>Descriu el tipus de música que vols escoltar:</p>
+      <h1>SpotifAI - Music recommender</h1>
+      <p>Describe the type of music you want to listen to, how you feel or the lyrics you love:</p>
       <input
         type="text"
-        placeholder="Escriu la teva descripció aquí..."
+        placeholder="Write your description here..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button onClick={handleGenerate}>Genera Playlist</button>
+      <button onClick={handleGenerate}>Recommend me!</button>
 
       <div className="playlist">
-        <h2>Les meves Recomanacions:</h2>
+        <h2>We recommend:</h2>
         {recommendations.length > 0 ? (
           <ul>
             {recommendations.map((song, i) => (
@@ -51,7 +51,7 @@ function Home() {
             ))}
           </ul>
         ) : (
-          <p>No hi ha cançons per mostrar encara.</p>
+          <p>No songs to display yet. Please, provide a description to get recommendations.</p>
         )}
       </div>
     </div>

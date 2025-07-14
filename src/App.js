@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <Link to="/">Inici</Link>
-        <Link to="/info">Informació</Link>
+        <Link to="/">Home</Link>
+        <Link to="/info">About</Link>
       </nav>
 
       {/* Contenidor on es carregaran les "pàgines" */}
